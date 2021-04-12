@@ -39,6 +39,12 @@ const pipeline = [
       'userWord.userId',
       'userWord.__v'
     ]
+  },
+  {
+    $addFields: { id: '$_id' }
+  },
+  {
+    $project: { _id: 0 }
   }
 ];
 
