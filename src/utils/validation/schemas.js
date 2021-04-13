@@ -14,7 +14,8 @@ const optionalScheme = Joi.object()
     Joi.number(),
     Joi.boolean(),
     Joi.date(),
-    Joi.object()
+    Joi.object(),
+    Joi.array()
   ])
   .custom(optionalValidator, 'optional object validation')
   .error(errors => {
