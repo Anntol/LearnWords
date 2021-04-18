@@ -315,11 +315,11 @@ paths:
         required: true
         schema:
           type: string
-    get:
+    put:
       tags:
         - Users
-      summary: Get new user tokens
-      description: Gets new user tokens
+      summary: Update user tokens
+      description: Refreshes user tokens
       responses:
         200:
           description: Successful operation
