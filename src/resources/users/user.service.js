@@ -21,7 +21,12 @@ const authenticate = async user => {
 
 const get = id => usersRepo.get(id);
 
-const save = user => usersRepo.save(user);
+const save = async user => {
+  const newUser = await usersRepo.save(user);
+  const userId = newUser._id;
+  await statisticService.upsert(userId, { userId });
+  return newUser;
+};
 
 const update = (id, user) => usersRepo.update(id, user);
 
