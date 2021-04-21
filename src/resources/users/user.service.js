@@ -24,7 +24,10 @@ const get = id => usersRepo.get(id);
 const save = async user => {
   const newUser = await usersRepo.save(user);
   const userId = newUser._id;
-  await statisticService.upsert(userId, { userId });
+  await Promise.all([
+    statisticService.upsert(userId, { userId }),
+    settingsService.upsert(userId, { userId })
+  ]);
   return newUser;
 };
 
